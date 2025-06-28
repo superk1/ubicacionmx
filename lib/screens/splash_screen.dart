@@ -24,17 +24,33 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Asegúrate de tener tu logo en assets/logo.png
-            // Image.asset('assets/logo.png', width: 150),
-            Text("UbicacionMX", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-            SizedBox(height: 20),
-            CircularProgressIndicator(),
+            Image(
+              image: const AssetImage('assets/logo.png'),
+               width: 150,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(
+                    Icons.map,
+                    size: 100,
+                    color: Colors.grey,
+                  );
+                },
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "UbicacionMX",
+                style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+               ),
+            ),
+            const SizedBox(height: 20),
+            const CircularProgressIndicator(),
           ],
         ),
       ),
